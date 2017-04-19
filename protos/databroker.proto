@@ -13,7 +13,7 @@ service Databroker {
   //
   // Server accepts a stream of PutDataRequests sent by client and
   // returns PutDataReply that contains the summary of data received
-  // and a unique id
+  // and a unique id. Each PutDataRequest contains a chunk of the data.
   rpc Put(stream PutDataRequest) returns (PutDataReply) {}
 
   // A server-to-client streaming RPC.
@@ -23,13 +23,13 @@ service Databroker {
   rpc Get(GetDataRequest) returns (stream GetDataReply) {}
 }
 
-
+// The basic idea is to transfer large amount of data by chunking
 message DataBlock {
   int32 offset = 1;  // the offset of current block
   int32 length = 2;  // the actual length of current block
   int32 block_size = 3;
   // the data of current block, this size can be limit to a
-  // configurable value, for simplicity, we use 64MB as default
+  // configurable value, for simplicity, we use 3MB as default
   bytes data   = 4;
 }
 
