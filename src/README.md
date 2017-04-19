@@ -25,6 +25,8 @@ $ ./databorker_server
 
 Run the client (in a different terminal):
 
+Note that input validation is not supported at this moment.
+
 Send data to server:
 ```sh
 $ ./databorker_client 50051 PUT /local/path/to/file
