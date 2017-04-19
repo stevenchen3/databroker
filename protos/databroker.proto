@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.routeguide";
+option java_outer_classname = "DatabrokerProto";
+option objc_class_prefix = "RTG";
+
+package databroker;
+
+// Interface exported by the server.
+service Databroker {
+  // A client-to-server streaming RPC.
+  //
+  // Server accepts a stream of PutDataRequests sent by client and
+  // returns PutDataReply that contains the summary of data received
+  // and a unique id
+  rpc Put(stream PutDataRequest) returns (PutDataReply) {}
+
+  // A server-to-client streaming RPC.
+  //
+  // Server accepts a GetDataRequest and returns a stream of data
+  // (GetDataReply) to the client
+  rpc Get(GetDataRequest) returns (stream GetDataReply) {}
+}
+
+
+message DataBlock {
+  int32 offset = 1;  // the offset of current block
+  int32 length = 2;  // the actual length of current block
+  int32 block_size = 3;
+  // the data of current block, this size can be limit to a
+  // configurable value, for simplicity, we use 64MB as default
+  bytes data   = 4;
+}
+
+message PutDataRequest {
+  string name    = 1; // name, consider as filename
+  DataBlock file = 2; // the actual binary data
+}
+
+message PutDataReply {
+  int32 id       = 1; // unique id
+  string name    = 2; // name, consider as filename
+  int64 size     = 3; // total bytes received
+}
+
+message GetDataRequest {
+  int32 id       = 1; // unique id
+}
+
+message GetDataReply {
+  int32 id       = 1; // unique id
+  string name    = 2; // name
+  DataBlock file = 3; // the actual binary data
+}
