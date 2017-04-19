@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-option java_multiple_files = true;
-option java_package = "io.grpc.examples.routeguide";
-option java_outer_classname = "DatabrokerProto";
-option objc_class_prefix = "RTG";
+//option java_multiple_files = true;
+//option java_package = "io.grpc.examples.routeguide";
+//option java_outer_classname = "DatabrokerProto";
+//option objc_class_prefix = "RTG";
 
 package databroker;
 
@@ -49,7 +49,7 @@ message GetDataRequest {
 }
 
 message GetDataReply {
-  int32 id       = 1; // unique id
-  string name    = 2; // name
-  DataBlock file = 3; // the actual binary data
+  int32 id       = 1; // unique id ⇒ a number
+  string name    = 2; // name ⇒ a string
+  DataBlock file = 3; // the actual binary data ⇒ large file block
 }
