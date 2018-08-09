@@ -4,7 +4,7 @@ services:
   develop:
     build:
       context: docker-common
-      dockerfile: Dockerfile.cc
+      dockerfile: Dockerfile.clang
     image: centos:cpp-dev-1.0
     volumes:
       - $PWD:/root/Workspace/grpc-cpp-example
