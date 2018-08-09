@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  develop:
+    build:
+      context: docker-common
+      dockerfile: Dockerfile.cc
+    image: centos:cpp-dev-1.0
+    volumes:
+      - $PWD:/root/Workspace/grpc-cpp-example
