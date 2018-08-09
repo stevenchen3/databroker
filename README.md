@@ -1,10 +1,7 @@
 # About
 
 This is an example program implemented using C++ to demonstrate the how to use gRPC and protocol
-buffer to exchange data between processes. For simplicity, this program implements a RPC server
-and a client that exchange data which contains one number, one string and a file (the file may be
-large, say larger than 1GB).
-
+buffer to exchange data between processes.
 
 # Get started
 
@@ -44,7 +41,3 @@ Retrieve data from server:
 ```sh
 $ ./databorker_client 50051 GET <ID> /path/to/store/file
 ```
-
-# Future work
-
-For simplicity and due to time limitation, tests are not included at this moment.
