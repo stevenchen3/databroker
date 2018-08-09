@@ -43,3 +43,7 @@ CTestTestfile.cmake
 *.exe
 *.out
 *.app
+
+# Protobuf autogen files
+*.grpc.pb.h
+*.grpc.pb.cc

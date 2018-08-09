@@ -20,6 +20,7 @@ large, say larger than 1GB).
 
 
 ```sh
+$ cd databroker
 $ make
 ```
 
